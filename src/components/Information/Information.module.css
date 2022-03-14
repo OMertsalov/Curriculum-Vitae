@@ -1,0 +1,11 @@
+.Information a {
+  color: #e4e4e4;
+  font-size: small;
+  text-decoration: none;
+}
+
+.Socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}

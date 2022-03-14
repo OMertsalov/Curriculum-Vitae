@@ -1,0 +1,41 @@
+.ProgressBar {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+  margin: 10px 0px;
+  gap: 5px;
+}
+
+progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  background-color: rgb(95, 108, 120);
+  border-radius: 5px;
+  height: 6px;
+  border: none;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: rgb(95, 108, 120);
+  border-radius: 5px;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: rgb(218, 165, 0);
+  border-radius: 5px;
+}
+
+progress[value]::-moz-progress-bar {
+  background-color: rgb(218, 165, 0);
+  border-radius: 5px;
+}
+
+.ProgressBar label {
+  font-weight: bold;
+}
+
+.ProgressBar p {
+  margin: 0;
+}
