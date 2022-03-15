@@ -13,10 +13,10 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
+import { contactData } from "../../data/data";
 
 function Information() {
-  const birthDate = "1997-06-10";
-  const currentAge = moment().diff(birthDate, "years");
+  const currentAge = moment().diff(contactData.birthDate, "years");
   return (
     <div className={styles.Information}>
       <p>
@@ -33,36 +33,36 @@ function Information() {
           color="#e4e4e4"
           style={{ paddingRight: 5 }}
         />
-        Kraków, Poland
+        {contactData.location}
       </p>
       <p>
-        <a href="tel:+48791-030-224">
+        <a href={`tel:+48${contactData.phone}`}>
           <FontAwesomeIcon
             icon={faPhone}
             color="#e4e4e4"
             style={{ paddingRight: 5 }}
           />
-          (+48) 791-030-224
+          {`(+48) ${contactData.phone}`}
         </a>
       </p>
       <p>
-        <a href="mailto:aleksandermertsalov@gmail.com">
+        <a href={`mailto:${contactData.email}`}>
           <FontAwesomeIcon
             icon={faEnvelope}
             color="#e4e4e4"
             style={{ paddingRight: 5 }}
           />
-          aleksandermertsalov@gmail.com
+          {contactData.email}
         </a>
       </p>
       <div className={styles.Socials}>
-        <a href="https://www.linkedin.com/in/aleksandermertsalov">
+        <a href={contactData.linkedinURL}>
           <FontAwesomeIcon icon={faLinkedin} size="2x" color="#e4e4e4" />
         </a>
-        <a href="https://www.github.com/OMertsalov">
+        <a href={contactData.githubURL}>
           <FontAwesomeIcon icon={faGithub} size="2x" color="#e4e4e4" />
         </a>
-        <a href="https://www.instagram.com/mertsal0v/">
+        <a href={contactData.instagramURL}>
           <FontAwesomeIcon icon={faInstagram} size="2x" color="#e4e4e4" />
         </a>
       </div>

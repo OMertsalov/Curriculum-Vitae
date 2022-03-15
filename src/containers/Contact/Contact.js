@@ -3,14 +3,9 @@ import styles from "./Contact.module.css";
 import profilePhoto from "../../assets/social_photo1.jpg";
 import Information from "../../components/Information/Information";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import { languages } from "../../data/data";
 
 function Contact() {
-  const languages = [
-    { name: "polish", progress: 100 },
-    { name: "ukrainian", progress: 100 },
-    { name: "russian", progress: 100 },
-    { name: "english", progress: 90 },
-  ];
   return (
     <div className={styles.Contact}>
       <div className={styles.Photo}>
@@ -23,8 +18,9 @@ function Contact() {
       <Information />
       <div className={styles.Languages}>
         <h2>Languages</h2>
-        {languages.map((language) => (
+        {languages.map((language, index) => (
           <ProgressBar
+            key={index}
             id={language.name}
             label={language.name}
             value={language.progress}

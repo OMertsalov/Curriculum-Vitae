@@ -12,7 +12,7 @@ function ProgressBar({ id, label, value }) {
   }
   return (
     <div className={styles.ProgressBar}>
-      <label for={id}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <progress id={id} max="100" value={value}></progress>
       <p>{description}</p>
     </div>

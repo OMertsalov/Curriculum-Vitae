@@ -1,0 +1,63 @@
+.Content {
+  padding: 10px;
+}
+
+.Point {
+  border-left: 1px solid black;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Point::before {
+  content: "";
+  height: 7px;
+  width: 7px;
+  position: relative;
+  left: -33.7px;
+  right: 0px;
+  top: 20px;
+  bottom: 0px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.PointHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.YearBox {
+  background-color: #455768;
+  margin: 0;
+  padding: 5px;
+  color: #e4e4e4;
+}
+
+.PointName {
+  color: #d6974c;
+}
+
+.Place {
+  flex-grow: 1;
+  text-align: end;
+  align-self: flex-start;
+  margin: 0;
+}
+
+.PointBody {
+}
+
+.Additional {
+}
+
+.Additional h3 {
+  margin: 5px;
+  font-size: 10pt;
+}
+
+.Additional ul {
+  padding: 0;
+}
