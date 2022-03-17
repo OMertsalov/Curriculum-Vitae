@@ -50,11 +50,11 @@ export const workExperience = [
         description: "",
         list: [
           "JavaEE",
-          "JSF",
-          "Spring",
+          "JSP/JSF/RichFaces",
+          "Maven/Spring Framework/MVC",
           "REST",
           "SVN",
-          "Javascript",
+          "Javascript ES6+",
           "React",
           "React-Native",
           "PostgreSQL",
@@ -64,5 +64,128 @@ export const workExperience = [
         ],
       },
     ],
+  },
+];
+
+export const skills = [
+  {
+    name: "JavaEE",
+    description: "5 year's experience",
+    type: "Web",
+  },
+  {
+    name: "Maven/Spring Framework/MVC",
+    description: "5 year's experience",
+    type: "Web",
+  },
+  {
+    name: "JPA/Hibernate",
+    description: "5 year's experience",
+    type: "Web",
+  },
+  {
+    name: "JSP/JSF/RichFaces",
+    description: "2.5 year's experience",
+    type: "Web",
+  },
+  {
+    name: "Javascript ES6+",
+    description: "3 year's experience",
+    type: "Web",
+  },
+  {
+    name: "React",
+    description: "2.5 year's experience",
+    type: "Web",
+  },
+  {
+    name: "REST",
+    description: "2.5 year's experience",
+    type: "Web",
+  },
+  {
+    name: "React-Native",
+    description: "1 year experience",
+    type: "Mobile",
+  },
+  {
+    name: "Android Development",
+    description: "Beginner",
+    type: "Mobile",
+  },
+  {
+    name: "MySql",
+    description: "1 year experience",
+    type: "SQL",
+  },
+  {
+    name: "Microsoft SQL Server",
+    description: "Learned during studies",
+    type: "SQL",
+  },
+  {
+    name: "OpenCV",
+    description: "Was used in my bachelor's project",
+    type: "Technologies/Library's",
+  },
+  {
+    name: "Tesseract OCR v4(Training process)",
+    description: "Was used in my bachelor's project",
+    type: "Technologies/Library's",
+  },
+  {
+    name: "Linux",
+    description: "5 year's experience",
+    type: "Platform",
+  },
+  {
+    name: "Windows",
+    description: "",
+    type: "Platform",
+  },
+  {
+    name: "Eclipse",
+    description: "",
+    type: "Tools",
+  },
+  {
+    name: "Android Studio",
+    description: "",
+    type: "Tools",
+  },
+  {
+    name: "Visual Studio",
+    description: "",
+    type: "Tools",
+  },
+  {
+    name: "Lumira Designer(SAP)",
+    description: "Creating SDK Extensions SVG/D3.js",
+    type: "Tools",
+  },
+  {
+    name: "SVN",
+    description: "",
+    type: "Tools",
+  },
+  {
+    name: "Git/GitHub",
+    description: "",
+    type: "Tools",
+  },
+  {
+    name: "Redmine",
+    description: "Learned during studies",
+    type: "Tools",
+  },
+  {
+    name: "Jenkins",
+    description: "",
+    type: "Tools",
+  },
+  {
+    name: "Algorithms in C++",
+    description: "Learned during studies",
+    type: "Others",
   },
 ];

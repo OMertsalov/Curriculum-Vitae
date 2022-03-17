@@ -1,6 +1,7 @@
 import React from "react";
+import SliderDeck from "../../components/Slider/SliderDeck/SliderDeck";
 import TimeLaps from "../../components/TimeLaps/TimeLaps";
-import { education, workExperience } from "../../data/data";
+import { education, skills, workExperience } from "../../data/data";
 import styles from "./About.module.css";
 
 function About() {
@@ -13,7 +14,11 @@ function About() {
       <div className={styles.Education}>
         <TimeLaps tittle="Education" data={education} />
       </div>
-      {/* Skills,Own Projects,Summary */}
+      <div>
+        <h2>Skills</h2>
+        <SliderDeck data={skills} />
+      </div>
+      {/*Own Projects,Summary */}
     </div>
   );
 }
