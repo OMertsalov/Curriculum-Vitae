@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Card from "../Card/Card";
 import styles from "./SliderDeck.module.css";
 
-function SliderDeck({ data }) {
+function SliderDeck({ data, size }) {
   const deckRef = useRef();
 
   const [cards, setCards] = useState([]);
@@ -81,7 +81,6 @@ function SliderDeck({ data }) {
   }, [cards]);
 
   useEffect(() => {
-    console.log("hello");
     const colors = [
       "red",
       "blue",
@@ -97,7 +96,10 @@ function SliderDeck({ data }) {
       "blueviolet",
     ];
     const deckDiv = deckRef.current;
-    let middle_card_by_index = Math.floor(data.length / 2);
+    const dataWithImage = data.filter(
+      (element) => element.img && element.img.length
+    );
+    let middle_card_by_index = Math.floor(dataWithImage.length / 2);
 
     let center = {
       x: parseFloat(deckDiv.offsetWidth) / 2,
@@ -106,19 +108,20 @@ function SliderDeck({ data }) {
     let new_x = 0;
     let new_y = 0;
     let new_zIndex = 0;
-    const newCards = data.map((element, i) => {
+    const newCards = dataWithImage.map((element, i) => {
+      console.log("hear");
       if (i < middle_card_by_index) {
         //left side of the deck
-        new_x = center.x - 220 * (middle_card_by_index - i);
+        new_x = center.x - (size + 20) * (middle_card_by_index - i);
         new_y = center.y;
         new_zIndex = i;
       } else {
         // right side of the deck
-        new_x = center.x + 220 * (i - middle_card_by_index);
+        new_x = center.x + (size + 20) * (i - middle_card_by_index);
         new_y = center.y;
         new_zIndex = i * -1.0;
       }
-
+      console.log(new_x);
       let index = i;
       if (index >= colors.length) index -= colors.length;
 
@@ -130,11 +133,13 @@ function SliderDeck({ data }) {
           zIndex={i === middle_card_by_index ? 100 : new_zIndex}
           name={element.name}
           color={colors[index]}
+          size={size}
+          image={element.img}
         />
       );
     });
     setCards(newCards);
-  }, [data]);
+  }, [data, size]);
 
   useEffect(() => {
     if (autoScroll) autoScrollTimer.current = setInterval(clickNext, 2000);
@@ -149,16 +154,20 @@ function SliderDeck({ data }) {
       className={styles.Container}
     >
       <div>
-        <div ref={deckRef} className={styles.Deck}>
+        <div
+          ref={deckRef}
+          className={styles.Deck}
+          style={{ height: size, width: size }}
+        >
           <div>{cards}</div>
           <button
             disabled={animationIn}
-            className={styles.PrevButton}
+            style={{ right: size }}
             onClick={clickPrev}
           />
           <button
             disabled={animationIn}
-            className={styles.NextButton}
+            style={{ left: size }}
             onClick={clickNext}
           />
         </div>
