@@ -23,6 +23,11 @@ function SliderDeck({ data, size }) {
         deckDivChildren[i].style.transitionDuration = "0.6s";
         deckDivChildren[i].style.left = deckDivChildren[i - 1].style.left;
         deckDivChildren[i].style.zIndex = deckDivChildren[i - 1].style.zIndex;
+        deckDivChildren[i].style.top = deckDivChildren[i - 1].style.top;
+        deckDivChildren[i].style.boxShadow =
+          deckDivChildren[i - 1].style.boxShadow;
+        deckDivChildren[i].children[1].style.opacity =
+          deckDivChildren[i - 1].children[1].style.opacity;
       }
 
       deckDivChildren[0].style.transitionDuration = "0.2s";
@@ -55,6 +60,11 @@ function SliderDeck({ data, size }) {
         deckDivChildren[i].style.transitionDuration = "0.6s";
         deckDivChildren[i].style.left = deckDivChildren[i + 1].style.left;
         deckDivChildren[i].style.zIndex = deckDivChildren[i + 1].style.zIndex;
+        deckDivChildren[i].style.top = deckDivChildren[i + 1].style.top;
+        deckDivChildren[i].style.boxShadow =
+          deckDivChildren[i + 1].style.boxShadow;
+        deckDivChildren[i].children[1].style.opacity =
+          deckDivChildren[i + 1].children[1].style.opacity;
       }
 
       deckDivChildren[deckDivChildren.length - 1].style.transitionDuration =
@@ -81,20 +91,6 @@ function SliderDeck({ data, size }) {
   }, [cards]);
 
   useEffect(() => {
-    const colors = [
-      "red",
-      "blue",
-      "orange",
-      "purple",
-      "green",
-      "pink",
-      "white",
-      "grey",
-      "yellow",
-      "aqua",
-      "brown",
-      "blueviolet",
-    ];
     const deckDiv = deckRef.current;
     const dataWithImage = data.filter(
       (element) => element.img && element.img.length
@@ -109,22 +105,17 @@ function SliderDeck({ data, size }) {
     let new_y = 0;
     let new_zIndex = 0;
     const newCards = dataWithImage.map((element, i) => {
-      console.log("hear");
       if (i < middle_card_by_index) {
         //left side of the deck
-        new_x = center.x - (size + 20) * (middle_card_by_index - i);
-        new_y = center.y;
+        new_x = center.x - (size + 40) * (middle_card_by_index - i);
+        new_y = i === middle_card_by_index ? center.y - 20 : center.y;
         new_zIndex = i;
       } else {
         // right side of the deck
-        new_x = center.x + (size + 20) * (i - middle_card_by_index);
-        new_y = center.y;
+        new_x = center.x + (size + 40) * (i - middle_card_by_index);
+        new_y = i === middle_card_by_index ? center.y - 20 : center.y;
         new_zIndex = i * -1.0;
       }
-      console.log(new_x);
-      let index = i;
-      if (index >= colors.length) index -= colors.length;
-
       return (
         <Card
           key={i}
@@ -132,9 +123,10 @@ function SliderDeck({ data, size }) {
           y={new_y}
           zIndex={i === middle_card_by_index ? 100 : new_zIndex}
           name={element.name}
-          color={colors[index]}
+          description={element.description}
           size={size}
           image={element.img}
+          isActiveCard={i === middle_card_by_index}
         />
       );
     });
@@ -153,24 +145,22 @@ function SliderDeck({ data, size }) {
       onMouseLeave={() => setAutoScroll(true)}
       className={styles.Container}
     >
-      <div>
-        <div
-          ref={deckRef}
-          className={styles.Deck}
-          style={{ height: size, width: size }}
-        >
-          <div>{cards}</div>
-          <button
-            disabled={animationIn}
-            style={{ right: size }}
-            onClick={clickPrev}
-          />
-          <button
-            disabled={animationIn}
-            style={{ left: size }}
-            onClick={clickNext}
-          />
-        </div>
+      <div
+        ref={deckRef}
+        className={styles.Deck}
+        style={{ height: size, width: size + 40 }}
+      >
+        <div>{cards}</div>
+        <button
+          disabled={animationIn}
+          style={{ right: size }}
+          onClick={clickPrev}
+        />
+        <button
+          disabled={animationIn}
+          style={{ left: size }}
+          onClick={clickNext}
+        />
       </div>
     </div>
   );
