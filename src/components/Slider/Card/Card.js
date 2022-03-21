@@ -6,13 +6,12 @@ function Card(props) {
     left: `${props.x}px`,
     top: `${props.y}px`,
     zIndex: props.zIndex,
-    height: props.size / 2,
-    width: props.size,
+    height: props.height,
+    width: props.width,
   };
 
   return (
     <div className={styles.Card} style={cardStyle}>
-      <h3 className={styles.Name}>{props.name}</h3>
       <img
         style={{
           boxShadow: props.isActiveCard
@@ -23,7 +22,8 @@ function Card(props) {
         src={process.env.PUBLIC_URL + props.image}
         alt="skill"
       />
-      <div style={{ opacity: props.isActiveCard ? 1 : 0 }}>
+      <div style={{ display: props.isActiveCard ? "initial" : "none" }}>
+        <h3>{props.name}</h3>
         <p>{props.description}</p>
       </div>
     </div>

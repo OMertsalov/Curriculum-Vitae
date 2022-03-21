@@ -16,7 +16,13 @@ function About() {
       </div>
       <div>
         <h2>Skills</h2>
-        <SliderDeck size={130} data={skills} />
+        <SliderDeck
+          containerHeight={230}
+          containerWidth={160}
+          imageHeight={65}
+          imageWidth={150}
+          data={skills}
+        />
       </div>
       {/*Own Projects,Summary */}
     </div>
