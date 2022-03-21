@@ -2,93 +2,72 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Card from "../Card/Card";
 import styles from "./SliderDeck.module.css";
 
+function shiftCardsStyles(firstCard, secondCard) {
+  firstCard.style.transitionDuration = "0.6s";
+  firstCard.style.left = secondCard.style.left;
+  firstCard.style.zIndex = secondCard.style.zIndex;
+  firstCard.style.top = secondCard.style.top;
+
+  // firstCard.children[1].style.opacity = secondCard.children[1].style.opacity;
+  firstCard.getElementsByTagName("img")[0].style.boxShadow =
+    secondCard.getElementsByTagName("img")[0].style.boxShadow;
+}
+
 function SliderDeck({ data, size }) {
   const deckRef = useRef();
 
   const [cards, setCards] = useState([]);
   const [animationIn, setAnimationIn] = useState(false);
   const [autoScroll, setAutoScroll] = useState(true);
-  const autoScrollTimer = useRef(null);
+  const autoScrollInterval = useRef(null);
 
-  const clickNext = useCallback(() => {
-    if (cards.length > 1) {
-      setAnimationIn(true);
-      const deckDiv = deckRef.current.children[0];
-      const deckDivChildren = deckDiv.children;
-      let lastCardLeft = deckDivChildren[deckDivChildren.length - 1].style.left;
-      let lastCardZIndex =
-        deckDivChildren[deckDivChildren.length - 1].style.zIndex;
+  const onDeckClickHandler = useCallback(
+    (isNextClicked) => {
+      if (cards.length > 1) {
+        setAnimationIn(true);
+        const deckDiv = deckRef.current.children[0];
+        const deckDivChildren = deckDiv.children;
+        const lastShiftedCard = isNextClicked
+          ? deckDivChildren[deckDivChildren.length - 1]
+          : deckDivChildren[0];
+        const lastShiftedCardStyleLeft = lastShiftedCard.style.left;
+        const lastShiftedCardStyleZIndex = lastShiftedCard.style.zIndex;
 
-      for (let i = deckDivChildren.length - 1; i > 0; i--) {
-        deckDivChildren[i].style.transitionDuration = "0.6s";
-        deckDivChildren[i].style.left = deckDivChildren[i - 1].style.left;
-        deckDivChildren[i].style.zIndex = deckDivChildren[i - 1].style.zIndex;
-        deckDivChildren[i].style.top = deckDivChildren[i - 1].style.top;
-        deckDivChildren[i].style.boxShadow =
-          deckDivChildren[i - 1].style.boxShadow;
-        deckDivChildren[i].children[1].style.opacity =
-          deckDivChildren[i - 1].children[1].style.opacity;
-      }
+        if (isNextClicked)
+          for (let i = deckDivChildren.length - 1; i > 0; i--) {
+            shiftCardsStyles(deckDivChildren[i], deckDivChildren[i - 1]);
+          }
+        else
+          for (let i = 0; i < deckDivChildren.length - 1; i++) {
+            shiftCardsStyles(deckDivChildren[i], deckDivChildren[i + 1]);
+          }
 
-      deckDivChildren[0].style.transitionDuration = "0.2s";
+        const cardToMove = isNextClicked
+          ? deckDivChildren[0]
+          : deckDivChildren[deckDivChildren.length - 1];
 
-      setTimeout(() => {
-        deckDivChildren[0].style.transitionDuration = "0.0s";
-        deckDivChildren[0].style.left = lastCardLeft;
-        deckDivChildren[0].style.zIndex = lastCardZIndex;
-
-        deckDiv.appendChild(deckDivChildren[0]);
+        cardToMove.style.transitionDuration = "0.2s";
 
         setTimeout(() => {
-          deckDivChildren[deckDivChildren.length - 1].style.transitionDuration =
-            "0.2s";
-          setAnimationIn(false);
-        }, 100);
-      }, 700);
-    }
-  }, [cards]);
+          cardToMove.style.transitionDuration = "0.0s";
+          cardToMove.style.left = lastShiftedCardStyleLeft;
+          cardToMove.style.zIndex = lastShiftedCardStyleZIndex;
 
-  const clickPrev = useCallback(() => {
-    if (cards.length > 1) {
-      setAnimationIn(true);
-      const deckDiv = deckRef.current.children[0];
-      const deckDivChildren = deckDiv.children;
-      let firstCardLeft = deckDivChildren[0].style.left;
-      let firstCardZIndex = deckDivChildren[0].style.zIndex;
+          if (isNextClicked) deckDiv.appendChild(cardToMove);
+          else deckDiv.insertBefore(cardToMove, deckDivChildren[0]);
 
-      for (let i = 0; i < deckDivChildren.length - 1; i++) {
-        deckDivChildren[i].style.transitionDuration = "0.6s";
-        deckDivChildren[i].style.left = deckDivChildren[i + 1].style.left;
-        deckDivChildren[i].style.zIndex = deckDivChildren[i + 1].style.zIndex;
-        deckDivChildren[i].style.top = deckDivChildren[i + 1].style.top;
-        deckDivChildren[i].style.boxShadow =
-          deckDivChildren[i + 1].style.boxShadow;
-        deckDivChildren[i].children[1].style.opacity =
-          deckDivChildren[i + 1].children[1].style.opacity;
+          setTimeout(() => {
+            const movedCard = isNextClicked
+              ? deckDivChildren[deckDivChildren.length - 1]
+              : deckDivChildren[0];
+            movedCard.style.transitionDuration = "0.2s";
+            setAnimationIn(false);
+          }, 100);
+        }, 700);
       }
-
-      deckDivChildren[deckDivChildren.length - 1].style.transitionDuration =
-        "0.2s";
-
-      setTimeout(() => {
-        deckDivChildren[deckDivChildren.length - 1].style.transitionDuration =
-          "0.0s";
-        deckDivChildren[deckDivChildren.length - 1].style.left = firstCardLeft;
-        deckDivChildren[deckDivChildren.length - 1].style.zIndex =
-          firstCardZIndex;
-
-        deckDiv.insertBefore(
-          deckDivChildren[deckDivChildren.length - 1],
-          deckDivChildren[0]
-        );
-
-        setTimeout(() => {
-          deckDivChildren[0].style.transitionDuration = "0.2s";
-          setAnimationIn(false);
-        }, 100);
-      }, 700);
-    }
-  }, [cards]);
+    },
+    [cards]
+  );
 
   useEffect(() => {
     const deckDiv = deckRef.current;
@@ -134,10 +113,14 @@ function SliderDeck({ data, size }) {
   }, [data, size]);
 
   useEffect(() => {
-    if (autoScroll) autoScrollTimer.current = setInterval(clickNext, 2000);
-    else clearInterval(autoScrollTimer.current);
-    return () => clearInterval(autoScrollTimer.current);
-  }, [autoScroll, cards, clickNext]);
+    if (autoScroll)
+      autoScrollInterval.current = setInterval(
+        () => onDeckClickHandler(true),
+        2000
+      );
+    else clearInterval(autoScrollInterval.current);
+    return () => clearInterval(autoScrollInterval.current);
+  }, [autoScroll, cards, onDeckClickHandler]);
 
   return (
     <div
@@ -148,18 +131,18 @@ function SliderDeck({ data, size }) {
       <div
         ref={deckRef}
         className={styles.Deck}
-        style={{ height: size, width: size + 40 }}
+        style={{ minHeight: size + 50, width: size + 40 }}
       >
         <div>{cards}</div>
         <button
           disabled={animationIn}
           style={{ right: size }}
-          onClick={clickPrev}
+          onClick={() => onDeckClickHandler(false)}
         />
         <button
           disabled={animationIn}
           style={{ left: size }}
-          onClick={clickNext}
+          onClick={() => onDeckClickHandler(true)}
         />
       </div>
     </div>

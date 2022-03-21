@@ -10,23 +10,20 @@ function Card(props) {
     width: props.size,
   };
 
-  if (props.isActiveCard) {
-    cardStyle = {
-      ...cardStyle,
-      boxShadow:
-        "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-    };
-  }
-
   return (
     <div className={styles.Card} style={cardStyle}>
+      <h3 className={styles.Name}>{props.name}</h3>
       <img
+        style={{
+          boxShadow: props.isActiveCard
+            ? "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
+            : "",
+        }}
         className={styles.Image}
         src={process.env.PUBLIC_URL + props.image}
-        alt="slider"
+        alt="skill"
       />
       <div style={{ opacity: props.isActiveCard ? 1 : 0 }}>
-        <p>{props.name}</p>
         <p>{props.description}</p>
       </div>
     </div>
