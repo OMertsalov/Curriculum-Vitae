@@ -18,3 +18,15 @@
 .About h2 {
   color: #455768;
 }
+
+.About h3 {
+  margin: 5px;
+  font-size: 10pt;
+}
+
+.Summary {
+  color: #696969;
+  font-size: smaller;
+  text-align: justify;
+  padding: 8px;
+}

@@ -15,6 +15,15 @@ export const languages = [
   { name: "english", progress: 90 },
 ];
 
+export const summary =
+  "Skilled, very motivated in improving myself. I'm a person with a good" +
+  " amount of self-discipline and always setting myself very high" +
+  " standards. 5 years of experience in developing java applications." +
+  " 3 years of experience as front-end developer. Also good at solving" +
+  " complex problems using algorithms and data structures." +
+  " Mostly interested in developing web applications using React and Java." +
+  " I'm also have experience on developing mobile apps using React Native" +
+  " and have passed some Android Development courses on Udemy.";
 export const education = [
   {
     name: "School",
@@ -129,6 +138,12 @@ export const skills = [
     type: "SQL",
   },
   {
+    name: "PostgreSQL",
+    description: "2 years experience",
+    img: "",
+    type: "SQL",
+  },
+  {
     name: "Microsoft SQL Server",
     description: "Learned during studies",
     img: "/images/ms-sql-server.jpg",
@@ -196,7 +211,7 @@ export const skills = [
   },
   {
     name: "Redmine",
-    description: "Learned during studies",
+    description: "",
     img: "/images/redmine.png",
     type: "Tools",
   },

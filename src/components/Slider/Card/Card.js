@@ -22,9 +22,13 @@ function Card(props) {
         src={process.env.PUBLIC_URL + props.image}
         alt="skill"
       />
-      <div style={{ display: props.isActiveCard ? "initial" : "none" }}>
-        <h3>{props.name}</h3>
-        <p>{props.description}</p>
+      <div
+        style={{
+          display: props.isActiveCard ? "initial" : "none",
+        }}
+      >
+        <h3 style={{ marginTop: 6 }}>{props.name}</h3>
+        <p style={{ marginTop: 1 }}>{props.description}</p>
       </div>
     </div>
   );
