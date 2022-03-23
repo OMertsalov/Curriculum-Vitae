@@ -39,7 +39,7 @@ function About() {
           />
         )}
       </div>
-      {/*Own Projects,Summary */}
+      {/*Own Projects*/}
     </div>
   );
 }
