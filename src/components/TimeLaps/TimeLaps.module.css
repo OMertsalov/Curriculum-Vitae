@@ -1,5 +1,5 @@
 .Content {
-  padding: 10px;
+  padding-top: 20px;
 }
 
 .Point {
@@ -48,15 +48,6 @@
   margin: 0;
 }
 
-.PointBody {
-}
-
-.Additional {
-}
-
-.Additional h3 {
-}
-
-.Additional ul {
+.Point ul {
   padding: 0;
 }

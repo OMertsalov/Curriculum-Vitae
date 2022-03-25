@@ -22,10 +22,10 @@ function TimeLaps({ tittle, data }) {
                 </div>
                 <p className={styles.Place}>{point.place}</p>
               </div>
-              <div className={styles.PointBody}>
+              <div>
                 {point.additional.map((additional, index) => {
                   return (
-                    <div key={index} className={styles.Additional}>
+                    <div key={index}>
                       <div>
                         <h3>{additional.name}</h3>
                         <p>{additional.description}</p>

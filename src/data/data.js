@@ -228,3 +228,98 @@ export const skills = [
     type: "Others",
   },
 ];
+
+export const ownProjects = [
+  {
+    name: "Curriculum-Vitae",
+    description:
+      "Project was created to present myself and to get you familiarize with my Front-End skills." +
+      ' It was made in "React" without any "Component Libraries" and was hosted using "Github Pages" service.' +
+      " Also, there is a possibility to export it to PDF.",
+    image: "",
+    keywords: ["React"],
+    year: 2022,
+    link: "https://github.com/OMertsalov/Curriculum-Vitae",
+  },
+  {
+    name: "Receipt's Reader",
+    description:
+      "Java, web application that i have developed during my studies." +
+      " The main aim was to develop and implement methods for recognizing text" +
+      ' on the images of till receipts . To recognize text from images was used "Tesseract" software.' +
+      ' For image processing i have chosen the "OpenCv" library.' +
+      " On Github you could also find a thesis(in Polish). The first chapter describes" +
+      ' the optical character recognition process. The "Tesseract" software is also introduced there.' +
+      " The second chapter is devoted to neural networks. It describes the structure of the neural network" +
+      ' and the process of its operation. In addition, that chapter introduces "LSTM" recursive networks,' +
+      ' the type of which is used in the "Tesseract" software. The third chapter presents an application' +
+      " for recognizing data from till receipts. In this chapter i have described the proces of training" +
+      ' "Tesseract" neural network, the process of image preprocessing using the "OpenCv" library' +
+      " and the process of identifying individual data from the receipt. The identification is performed" +
+      " on the basis of the implemented regular expression. The effectiveness of the application is presented" +
+      " in the form of test results.",
+    image: "/images/receipt-reader.png",
+    keywords: [
+      "OCR",
+      "Optical Character Recognition",
+      "Tesseract",
+      "Neural networks",
+      "Recurrent neural networks",
+      "LSTM",
+      "till receipts",
+      "text segmentation",
+      "Java",
+      "MVC",
+      "OpenCv",
+      "Regular expressions",
+    ],
+    year: 2021,
+    link: "https://github.com/OMertsalov/BachellorDegree",
+  },
+  {
+    name: "E-Finance",
+    description:
+      "Java EE, web application. Main idea, is to keep track own" +
+      ' expenses statistics. There are such categories as "Food",' +
+      ' "Transport","Clothes" , etc. One of the useful features,' +
+      " setting month/year limit, should help user's to save their money." +
+      " E-finance show, what amount was spent and how much is left." +
+      " Spring email is used to restore forgotten password's and send to everyone week statistics.",
+    image: "/images/e-finanse.png",
+    keywords: [
+      "Java",
+      "MVC",
+      "Spring-boot",
+      "Spring-Data",
+      "Spring-Security",
+      "Spring-Email",
+      "Thymeleaf",
+      "MySQL",
+    ],
+    year: 2019,
+    link: "https://github.com/OMertsalov/E-Finance",
+  },
+  {
+    name: "Dobble",
+    description:
+      'Java SE multiplayer game. 52 card\'s, related to "Shopping"' +
+      " , allow you to play with 5 players in one session. Every user," +
+      " could choose ip-version to connect with and set up own Nickname." +
+      ' Whole project is composed of "Server", "Client with GUI" ,"Cards"' +
+      ' and "Protocol" that was specifically designed for it.',
+    image: "/images/dobble.png",
+    keywords: [
+      "GUI",
+      "Thread's Synchronization",
+      "Client/Server architecture",
+      "Own Protocol Implementation",
+    ],
+    year: 2019,
+    link: "https://github.com/OMertsalov/Dobble",
+  },
+];
+
+export const agreement =
+  "I hereby agree for processing the following personal information" +
+  " strictly for recruitment purposes in accordance with the regulation regarding the protecting-on data" +
+  " passed on the following date: 29.08.97r. Dz. U. nr 133 poz. 883";
