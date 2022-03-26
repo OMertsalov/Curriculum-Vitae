@@ -31,52 +31,48 @@
   padding: 8px;
 }
 
-.OwnProjects {
-  padding-top: 20px;
+.OwnProjects h2 {
+  padding-bottom: 20px;
 }
 
 .Project {
-  display: grid;
-  /* column-gap: 1px; */
-  grid-template-areas:
-    "name name year"
-    "image description description"
-    "keywords keywords keywords";
-  grid-template-columns: 1fr 2.5fr 0.5fr;
-  margin-bottom: 10px;
-  column-gap: 20px;
   margin-bottom: 20px;
+  display: inline-block;
 }
+
 .Project h3 {
   text-align: center;
-  grid-area: name;
   margin-bottom: 30px;
+  flex-grow: 2;
 }
+
 .ProjectYear {
-  grid-area: year;
   margin: 5px;
   font-size: 8pt;
   color: #918c8c;
-  justify-self: end;
 }
 
 .Project img {
   width: 250px;
   height: 150px;
   border: 1px solid #cfcccc;
-  grid-area: image;
-  /* align-self: center; */
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
 }
 
 .Project span {
+  float: left;
   font-size: 12pt;
   width: 250px;
   line-height: 150px;
+  /* height: 150px; */
   color: #918c8c;
   border: 1px solid #cfcccc;
   text-align: center;
   vertical-align: baseline;
-  grid-area: image;
+  margin-right: 15px;
+  margin-bottom: 15px;
 }
 
 .Project p {
@@ -91,6 +87,31 @@
 .Keywords {
   color: #837a7a;
   font-size: smaller;
-  grid-area: keywords;
   margin-top: 20px;
+}
+
+.ExportButton {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  margin: 30px;
+  padding: 10px;
+  background-color: rgba(255, 239, 0, 0.74);
+  border: 1px solid #cfcccc;
+}
+
+@media print {
+  .ExportButton {
+    display: none;
+  }
+
+  .Project {
+    /* break-inside: avoid; */
+    /* break-before: always; */
+  }
+
+  .OwnProjects {
+    /* break-inside: avoid; */
+    /* break-before: always; */
+  }
 }

@@ -9,14 +9,14 @@ function SkillsList({ data }) {
     <div>
       {skillTypes.map((type, index) => {
         return (
-          <div key={index}>
+          <div key={index} className={styles.Skill}>
             <h3>{type}</h3>
             <ul>
               {data
                 .filter((skill) => skill.type === type)
-                .map((skill) => {
+                .map((skill, key) => {
                   return (
-                    <li>
+                    <li key={key}>
                       <p>
                         {skill.name}
                         <span className={styles.Description}>

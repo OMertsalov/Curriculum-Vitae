@@ -12,9 +12,8 @@ function App() {
           <Contact />
           <About />
         </div>
+        <p className={styles.Agreement}>{agreement}</p>
       </Layout>
-
-      <p className={styles.Agreement}>{agreement}</p>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SkillsList from "../../components/SkillsList/SkillsList";
 import SliderDeck from "../../components/Slider/SliderDeck/SliderDeck";
 import TimeLaps from "../../components/TimeLaps/TimeLaps";
@@ -13,8 +13,25 @@ import styles from "./About.module.css";
 
 function About() {
   const [isSkillsExpanded, setIsSkillsExpanded] = useState(false);
+  const [printMode, setPrintMode] = useState(false);
+
+  const buttonHandler = () => {
+    setIsSkillsExpanded(true);
+    setPrintMode(true);
+  };
+
+  useEffect(() => {
+    if (printMode) {
+      window.print();
+      setPrintMode(false);
+    }
+  }, [printMode]);
+
   return (
     <div className={styles.About}>
+      <button onClick={buttonHandler} className={styles.ExportButton}>
+        Export to PDF
+      </button>
       <h1>Software developer</h1>
       <div className={styles.Summary}>
         <p>{summary}</p>
@@ -33,7 +50,7 @@ function About() {
           <SkillsList data={skills} />
         ) : (
           <SliderDeck
-            containerHeight={200}
+            containerHeight={170}
             containerWidth={140}
             imageHeight={55}
             imageWidth={120}
@@ -41,15 +58,23 @@ function About() {
           />
         )}
       </div>
-      <div>
+      <div className={styles.OwnProjects}>
         <h2>Own projects</h2>
-        <div className={styles.OwnProjects}>
+        <div>
           {ownProjects
             .sort((project1, project2) => project2.year - project1.year)
-            .map((projectData) => (
-              <div className={styles.Project}>
-                <h3>{projectData.name}</h3>
-                <p className={styles.ProjectYear}>{projectData.year}</p>
+            .map((projectData, index) => (
+              <div key={index} className={styles.Project}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
+                >
+                  <h3>{projectData.name}</h3>
+                  <p className={styles.ProjectYear}>{projectData.year}</p>
+                </div>
                 {projectData.image.length > 0 ? (
                   <img
                     src={process.env.PUBLIC_URL + projectData.image}

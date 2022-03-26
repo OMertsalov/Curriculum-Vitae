@@ -1,7 +1,6 @@
 .Contact {
   background-color: #455768;
   display: flex;
-  /* justify-content: space-between; */
   gap: 20px;
   flex-direction: column;
   padding: 20px;
