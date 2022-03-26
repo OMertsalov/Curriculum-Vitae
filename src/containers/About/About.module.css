@@ -90,18 +90,28 @@
   margin-top: 20px;
 }
 
-.ExportButton {
+.PDFButtons button {
+  margin-right: 10px;
+}
+.PDFButtons {
   position: fixed;
   right: 0px;
   bottom: 0px;
   margin: 30px;
+  z-index: 110;
+}
+
+.PDFButton {
   padding: 10px;
   background-color: rgba(255, 239, 0, 0.74);
   border: 1px solid #cfcccc;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
 }
 
 @media print {
-  .ExportButton {
+  .PDFButtons {
     display: none;
   }
 

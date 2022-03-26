@@ -5,6 +5,7 @@ import TimeLaps from "../../components/TimeLaps/TimeLaps";
 import {
   education,
   ownProjects,
+  pdfLink,
   skills,
   summary,
   workExperience,
@@ -29,9 +30,14 @@ function About() {
 
   return (
     <div className={styles.About}>
-      <button onClick={buttonHandler} className={styles.ExportButton}>
-        Export to PDF
-      </button>
+      <div className={styles.PDFButtons}>
+        <button onClick={buttonHandler} className={styles.PDFButton}>
+          Export to PDF ( for PC )
+        </button>
+        <a href={pdfLink} className={styles.PDFButton}>
+          Download latest PDF version
+        </a>
+      </div>
       <h1>Software developer</h1>
       <div className={styles.Summary}>
         <p>{summary}</p>

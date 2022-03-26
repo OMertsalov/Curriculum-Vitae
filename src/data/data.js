@@ -323,3 +323,6 @@ export const agreement =
   "I hereby agree for processing the following personal information" +
   " strictly for recruitment purposes in accordance with the regulation regarding the protecting-on data" +
   " passed on the following date: 29.08.97r. Dz. U. nr 133 poz. 883";
+
+export const pdfLink =
+  "https://drive.google.com/file/d/1HliI1lr5l_j0Mw2F7ys5d79nk8v2JRft/view?usp=sharing";

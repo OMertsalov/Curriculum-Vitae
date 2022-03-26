@@ -6,15 +6,13 @@ import Layout from "./hoc/Layout";
 
 function App() {
   return (
-    <div>
-      <Layout>
-        <div className={styles.App}>
-          <Contact />
-          <About />
-        </div>
-        <p className={styles.Agreement}>{agreement}</p>
-      </Layout>
-    </div>
+    <Layout>
+      <div className={styles.App}>
+        <Contact />
+        <About />
+      </div>
+      <p className={styles.Agreement}>{agreement}</p>
+    </Layout>
   );
 }
 
