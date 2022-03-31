@@ -39,9 +39,13 @@ export const education = [
     period: { from: "2016", to: "2019" },
     additional: [
       {
-        name: "Bachelor's degree",
-        description: "Subject: Computer Science",
-        list: [],
+        name: "Professional credentials",
+        description: "Subject: Computer Science, bachelor's degree",
+        list: [
+          "Professional knowledge in information technologies",
+          "Theoretical and practical knowledge in the field of IT and featured techniques of further Mathematics",
+          "Master at least two programming languages",
+        ],
       },
     ],
   },
@@ -55,21 +59,28 @@ export const workExperience = [
     period: { from: "2020-01-01", to: "" },
     additional: [
       {
-        name: "Technologies and Tools",
+        name: "Achievements",
         description: "",
         list: [
-          "JavaEE",
-          "JSP/JSF/RichFaces",
-          "Maven/Spring Framework/MVC",
-          "REST",
-          "SVN",
-          "Javascript ES6+",
-          "React",
-          "React-Native",
-          "PostgreSQL",
-          "Linux",
-          "SAP",
-          "Eclipse",
+          "Improved competence in Java 8 and Java frameworks",
+          "Improved competence as a Frontend developer(Javascript,React)",
+          "Improved competence as a React Native developer",
+          "Improved competence in Database design(PostgreSQL)",
+          "Improved competence in web services using REST and SOAP architecture",
+          "Improved communication skill's (client supporting)",
+        ],
+      },
+      {
+        name: "Tasks:",
+        description: "",
+        list: [
+          "Upgrading existing system with new features",
+          "System problem's solving for customer",
+          "Develop and maintaining invoice web system(receiving invoices from REST and" +
+            "email, generating own invoices, storing them in database and present them on a web" +
+            "to user's)",
+          "Designing and developing company product for mobile devices.",
+          "Deployment of releases",
         ],
       },
     ],
@@ -246,7 +257,7 @@ export const ownProjects = [
     description:
       "Java, web application that i have developed during my studies." +
       " The main aim was to develop and implement methods for recognizing text" +
-      ' on the images of till receipts . To recognize text from images was used "Tesseract" software.' +
+      ' on the images of till receipts. To recognize text from images was used "Tesseract" software.' +
       ' For image processing i have chosen the "OpenCv" library.' +
       " On Github you could also find a thesis(in Polish). The first chapter describes" +
       ' the optical character recognition process. The "Tesseract" software is also introduced there.' +
@@ -325,4 +336,4 @@ export const agreement =
   " passed on the following date: 29.08.97r. Dz. U. nr 133 poz. 883";
 
 export const pdfLink =
-  "https://drive.google.com/file/d/1HliI1lr5l_j0Mw2F7ys5d79nk8v2JRft/view?usp=sharing";
+  "https://drive.google.com/file/d/1E2RkJ950Om0Nued0qL8yfv85xhi2AUul/view?usp=sharing";
